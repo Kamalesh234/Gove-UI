@@ -1,0 +1,48 @@
+<div class="sidebar-box w-300">
+  <div class="sidebar-item cursor-pointer d-flex flex-column gap-2 p-3">
+    <mat-accordion style="background-color: #173662">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        *ngFor="let item of sideBarList"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ item?.title }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div
+          *ngFor="let menu of item?.children"
+          (click)="goToMenuItemDetail(menu?.menuModule, menu.url)"
+        >
+          <p style="cursor: pointer">{{ menu.title }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- <div class="d-flex flex-column gap-1">
+        <div class="item-select d-flex align-items-center justify-content-between">
+          <a>FOS</a>
+          <mat-icon class="cursor-pointer">keyboard_arrow_down</mat-icon>
+        </div>
+        <ul class="sub-items d-flex flex-column gap-1 list-unstyled p-0 my-0 me-0 ms-2">
+          <li selected><a>Prospect Master</a></li>
+          <li value="1"><a>Lead Generation</a></li>
+          <li value="2"><a>FVR hirer</a></li>
+          <li value="3"><a>FVR Guarantor</a></li>
+          <li value="3"><a>FVR Vihicle</a></li>
+          <li value="3"><a>BM Approval</a></li>
+          <li value="3"><a>Disbursement</a></li>
+          <li value="3"><a>Disbursement Details</a></li>
+          <li value="3"><a>Document collection</a></li>
+        </ul>
+      </div> -->
+  <!-- <div class="item" [routerLink]="'/admin/user-management'"><a>Admin</a></div>
+    <div class="item"><a>Report</a></div> -->
+</div>
+<!-- <div class="sidebar-close-box">
+  <div class="sidebar-icon-box mx-2 d-flex align-items-center justify-content-center">
+  <mat-icon>keyboard_backspace</mat-icon>
+  </div>
+</div> -->

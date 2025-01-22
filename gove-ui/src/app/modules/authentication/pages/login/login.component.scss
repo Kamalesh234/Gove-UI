@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+    // background: #173662;
+    background-image: url(../../../../../assets/images/back4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.loader-class {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.auth-page {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+
+
+    .login-block {
+        border: 1px solid #fff;
+        border-radius: 15px;
+        padding: 30px;
+
+        .user-icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .title {
+            font-size: 30px;
+            line-height: 32px;
+            font-weight: 600;
+            color: #f7811e;
+        }
+
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                color: #173662;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 22px;
+                color: #fff;
+            }
+
+            input {
+                color: #173662;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 22px;
+                border: 1px solid #f7811e;
+                background-color: #fff;
+
+                &:focus {
+                    outline: unset;
+                }
+            }
+
+            .validation-text {
+                color: #f7811e;
+            }
+
+            .password-option,
+            .remember {
+                font-size: 14px;
+                font-weight: 00;
+                line-height: 18px;
+                color: #f7811e;
+                text-decoration: unset;
+                cursor: pointer;
+            }
+
+            input[type=checkbox] {
+                accent-color: #f7811e;
+            }
+
+            .login-button {
+                background: #f7811e;
+                color: #173662;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 22px;
+                border: unset;
+                width: 40%;
+                justify-content: center;
+                display: flex;
+                padding: 8px 0;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
+.topnav {
+    display: none;
+}
+
+@media only screen and (max-width: 540px) {
+    .auth-page {
+        margin-top: 60px;
+        height: calc(100vh - 60px);
+    }
+
+    // .header {
+    //         height: 60px;
+    //         padding-bottom: 8px;
+    //     }
+
+    //     .nav-list {
+    //         display: none !important;
+    //     }
+    //     .account-nav{
+    //         display: none  !important;
+    //     }
+    //     .logo-box{
+    //         min-width: 150px;
+    //         height: 100%;
+    //         img{
+    //             width: 100%;
+    //         }
+    //         }
+    // }
+    // .slider{
+    //     position: absolute;
+    //     bottom: 0;
+    // }
+    // .topnav {
+    // display: block;
+
+
+    //     #myLinks {
+    //         display: none;
+    //         background-color: #173662;
+    //         position: absolute;
+    //         top: 70px;
+    //         z-index: 1;
+    //         left: 0;
+    //         right: 0;
+    //     }
+
+    //     a {
+    //         color: #f7811e;
+    //         padding: 14px 16px;
+    //         text-decoration: none;
+    //         font-size: 18px;
+    //         font-weight: 500;
+    //         line-height: 22px;
+    //         border-radius: 5px;
+    //         display: block;
+
+    //         &:hover {
+    //             background-color: #f7811e;
+    //             color: #173662;
+    //         }
+    //     }
+
+    //     a.icon {
+    //         display: block;
+    //         position: absolute;
+    //         right: 15px;
+    //         top: 12px;
+    //         padding: 0;
+    //         font-size: 20px;
+
+    //         &:hover {
+    //             background-color: transparent;
+    //         }
+
+    //     }
+    // }
+}

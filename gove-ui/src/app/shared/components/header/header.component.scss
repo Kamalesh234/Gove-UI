@@ -1,0 +1,175 @@
+$animationSpeed: 40s;
+
+// Animation
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 7))
+    }
+}
+
+
+// Styling
+.slider {
+
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    &::before {
+        left: 0;
+        top: 0;
+    }
+
+    .slide-track {
+        animation: scroll $animationSpeed linear infinite;
+        display: flex;
+        width: calc(250px * 14);
+    }
+
+    .slide {
+        width: auto;
+        text-wrap: nowrap;
+        color: #173662;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.header {
+    top: 0;
+    height: 80px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    box-shadow: 1px 0 5px 0px #173662;
+    background: #fff;
+
+    .logo-box {
+        width: auto;
+        height: 60px;
+        padding: 0;
+    }
+
+    .nav-list {
+        gap: 10px;
+
+        .nav-item {
+            cursor: pointer;
+            .nav-link {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 22px;
+                color: #000;
+                border-radius: 5px;
+
+                &:hover {
+                    background: #f7811e;
+                    color: #173662;
+                }
+
+                &.active {
+                    background: #f7811e;
+                    color: #173662;
+                }
+            }
+        }
+    }
+}
+
+.topnav {
+    display: none;
+}
+.form-check-input:checked {
+    background-color: #000;
+    border-color: green;
+    box-shadow: unset;
+}
+.form-check-input{
+    background-color:#f0f6ff;
+    border-color: #173662;
+    box-shadow: unset;
+}
+
+@media only screen and (max-width: 540px) {
+    .header {
+        height: 70px;
+        padding-bottom: 20px;
+    }
+
+    .nav-list {
+        display: none !important;
+    }
+
+    .account-nav {
+        display: none !important;
+    }
+
+    .logo-box {
+        min-width: 150px;
+        height: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    #myLinks {
+        display: none;
+        background-color: #173662;
+        position: absolute;
+        top: 70px;
+        z-index: 1;
+        left: 0;
+        right: 0;
+    }
+
+    a {
+        color: #f7811e;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        border-radius: 5px;
+        display: block;
+
+        &:hover {
+            background-color: #f7811e;
+            color: #173662;
+        }
+    }
+
+    a.icon {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 12px;
+        padding: 0;
+        font-size: 20px;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+    }
+
+    .slider {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .topnav {
+        display: block;
+    }
+}

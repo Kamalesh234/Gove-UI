@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+/* FOR USE IN PROD ENVIRONMENT */
+$version: unique_id();
+$cdnUrl: 'https://cdn-az.hl.com';
+
+@import url("#{$cdnUrl}/prod/shared/assets/css/theme.css?v=#{$version}");
+@import url("#{$cdnUrl}/prod/shared/assets/css/hl-custom.css?v=#{$version}");
+

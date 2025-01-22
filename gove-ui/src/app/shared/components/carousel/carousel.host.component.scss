@@ -1,0 +1,52 @@
+.carousel {
+  width: 500px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.carousel .item{
+  z-index: 1;
+  opacity: 0.6;
+  position: absolute;
+  transform: scale(0.3);
+  transition: all 0.3s ease-in;
+  &.active{
+    position: relative;
+    transform: scale(1);
+    width: 90%;
+    margin: 0 auto;
+    z-index: 10;
+    opacity: 1;
+  }
+}
+
+.carousel img {
+  width: 100%;
+  display: block;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.carousel button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.carousel button:first-child {
+  left: 0;
+}
+
+.carousel button:last-child {
+  right: 0;
+}

@@ -1,0 +1,68 @@
+//Tree
+:root {
+  --menu-hover-height: 35px;
+}
+
+.hl-menu {
+  .p-treenode-content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .p-tree {
+    padding: 0px;
+    background: transparent;
+    color: #495057;
+  }
+
+  .p-tree .p-tree-container .p-treenode {
+    padding: 0px;
+  }
+
+  .p-tree .p-tree-container .p-treenode .p-treenode-content.p-treenode-selectable:not(.p-highlight):hover {
+    color: #1D4ED8;
+    width: 100%;
+    background: #EFF6FF;
+  }
+
+  .p-tree .p-tree-container .p-treenode .p-treenode-content .p-tree-toggler {
+    color: #495057;
+  }
+
+  .p-tree .p-tree-container .p-treenode .p-treenode-content .p-tree-toggler:hover .p-tree-toggler-icon {
+    color: #1D4ED8;
+  }
+
+  .p-tree .p-tree-container .p-treenode .p-treenode-content.p-highlight {
+    background: #EFF6FF;
+    color: #1D4ED8;
+  }
+
+  .p-tree .p-tree-container .p-treenode .p-treenode-content.p-highlight .p-tree-toggler,
+  .p-tree .p-tree-container .p-treenode .p-treenode-content.p-highlight .p-treenode-icon {
+    color: #1D4ED8;
+  }
+}
+
+//Order List
+.p-orderlist .p-orderlist-controls {
+  display: flex;
+  flex-direction: column;
+
+  button:nth-child(1) {
+    order: 1;
+  }
+
+  button:nth-child(2) {
+    order: 0;
+  }
+
+  button:nth-child(3) {
+    order: 2;
+  }
+
+  button:nth-child(4) {
+    order: 3;
+  }
+}

@@ -1,0 +1,64 @@
+<div class="header position-fixed d-flex align-items-center">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between deshboard-menu">
+      <div class="d-flex align-items-center w-75">
+        <a class="logo-box d-flex align-items-center me-3">
+          <img src="../../../../assets/images/logo.svg" />
+        </a>
+        <div class="slider">
+          <div class="slide-track">
+            <div class="slide">
+              * EMI Report Received from Lead Generation Team * Sales Report
+              Generated for Oct-Nov 2023 * EMI Report Received from Lead
+              Generation Team * Sales Report Generated for Oct-Nov 2023
+            </div>
+            <div class="slide">
+              * EMI Report Received from Lead Generation Team * Sales Report
+              Generated for Oct-Nov 2023 * EMI Report Received from Lead
+              Generation Team * Sales Report Generated for Oct-Nov 2023
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="account-nav w-25 d-flex list-unstyled justify-content-end gap-3" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <div class="form-check form-switch d-flex align-items-center">
+            <input class="me-2 form-check-input" type="checkbox" id="flexSwitchCheckDefault" style="width:50px;height:25px" (change)="onThemeChange($event)" [(ngModel)]="selectedTheme">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Theme</label>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a><mat-icon>calendar_today</mat-icon></a>
+        </li>
+        <li class="nav-item" [matMenuTriggerFor]="menu">
+          <a><mat-icon>person</mat-icon></a>
+        </li>
+        <li class="nav-item"> 
+          <a><mat-icon>settings </mat-icon></a>
+        </li>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+      <!-- <ul class="nav-list d-flex list-unstyled m-0 p-0 align-items-center">
+                 <li class="nav-item"><a class="nav-link active px-3 py-2 ">Home</a></li>
+                 <li class="nav-item"><a class="nav-link p-2 px-3 " >About</a></li>
+                 <li class="nav-item"><a class="nav-link p-2 px-3 ">Features</a></li>
+             </ul> -->
+      <div class="topnav">
+        <a href="#home" class="active"></a>
+        <div id="myLinks">
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

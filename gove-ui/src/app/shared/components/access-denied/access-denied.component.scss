@@ -1,0 +1,105 @@
+:host {
+  width: 100%;
+}
+
+
+
+.content-box {
+  width: calc(100% - 300px);
+  margin-left: 300px;
+  margin-top: 80px;
+  background-color: var(--background-color);
+  height: 100%;
+
+  .prospect-details-box {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 12rem;
+    margin-left: 1rem;
+
+    .breadcrumb {
+      li {
+        color: var(--text-color);
+      }
+    }
+
+    .prospect-details-form {
+      caption {
+        font-size: 20px;
+        color: var(--text-bold-color);
+        padding-top: 0;
+        line-height: 28px;
+        font-weight: 600;
+      }
+
+      label,
+      input {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        color: var(--text-color);
+
+        &:focus {
+          box-shadow: unset;
+        }
+      }
+
+      input {
+        border: 1px solid var(--input-border);
+        background-color: var(--input-background);
+        border-radius: 5px;
+        color: var(--text-dark);
+      }
+
+      select {
+        border: 1px solid var(--input-border);
+        background-color: var(--input-background);
+        border-radius: 5px;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        color: var(--text-dark);
+
+      }
+
+      .massage-text {
+        color: #f7811e;
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 400;
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+
+      .next-button {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: var(--button-text-color);
+        background: var(--background-button);
+        border: unset;
+        padding: 5px 10px;
+      }
+
+    }
+  }
+
+  .submit-button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--button-text-color);
+    background: var(--background-button);
+    border: unset;
+    padding: 5px 10px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .content-box {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 80px;
+  }
+}

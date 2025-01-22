@@ -1,0 +1,80 @@
+html * {
+  font-family: var(--font-family);
+  /*font-size: 14px;*/
+}
+body {
+  background-color: #f5f5f5;
+}
+
+.brand-logo-white-horizontal {
+  content: url("https://cdn-dev.hl.com/dev/shared/assets/images/hl-brand/PNG/white/Houlihan-Lokey-Signature-mark-1-line-horizontal_white.png");
+}
+
+.brand-logo-white-2-line-left-aligned {
+  content: url("https://cdn-dev.hl.com/dev/shared/assets/images/hl-brand/PNG/white/Houlihan-Lokey-Signature-mark-2-line-left-aligned_white.png");
+}
+
+.brand-logo-white-globe-only {
+  content: url("https://cdn-dev.hl.com/dev/shared/assets/images/hl-brand/PNG/white/Houlihan-Lokey-Globe-only_white.png");
+}
+
+.brand-logo-rgb-horizontal {
+  content: url("https://cdn-dev.hl.com/dev/shared/assets/images/hl-brand/PNG/rgb/Houlihan-Lokey-Signature-mark-1-line-horizontal_rgb.png");
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 90%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.application-title {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.hl-nav-btn {
+  background-color: white !important;
+  color: #002855 !important;
+}
+
+.hl-nav-btn:hover {
+  background-color: #cbced5 !important;
+  color: #002855 !important;
+}
+
+.nav-bar {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: -webkit-fill-available;
+  background: #002855 !important;
+  color: white;
+  border: unset !important;
+  border-radius: 0px !important;
+  padding: 0.75rem !important;
+}
+@media screen and (max-width: 769px) {
+  .nav-bar {
+    padding: 0.50rem !important;
+  }
+}
+.footer {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  bottom: 0;
+  padding: 0rem;
+  top: unset;
+  width: -webkit-fill-available;
+  height: 2.5rem;
+  background: #002855 !important;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+/*# sourceMappingURL=styles.css.map */
+body {
+    --sidebar-background:#173662;
+    --text-color: #173966;
+    --text-bold-color: #173966;
+    --background-color: #f0f6ff;
+    --button-text-color: #fff;
+    --sidebar-background: #173662;
+    --text-grey: #808080;
+    --border-color: #cfd9e8;
+    --input-background: #fff;
+    --input-border: #1739668a;
+    --header-text-color: #fff;
+    --table-header-background: #173662;
+    --table-text-color: #173966;
+    --background-button: linear-gradient(45deg, #173966, #1a4575);
+    /* --ion-btn-background:#17cda8;
+      --invalid:#FFB3A5;#c4d4ed
+      --valid:#7ABD91; */
+  }
+  
+  body.dark-theme {
+    --sidebar-background:#FFC107;
+    --text-color: #fff;
+    --text-bold-color: #f0f6ff;
+    --background-color: #212529;
+    --button-text-color: #000;
+    --input-border: #1739668a;
+    // --sidebar-background: #f7811e;
+    --background-button: linear-gradient(45deg, #e1a82d, #f9b115, #dd9124, #f6960b);
+    --border-color: #cfd9e8;
+    --input-background: #fff;
+    --input-border: #1739668a;
+    --text-dark: #173966;
+    --table-header-background: #000;
+    /* --text-grey:#80808020;
+      --ion-btn-background:#17cda8;
+      --invalid:#FFB3A5;
+      --valid:#7ABD91; */
+  }
+  

@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+/* FOR USE IN TEST ENVIRONMENT */
+$version: unique_id();
+$cdnUrl: 'https://cdn-test.hl.com';
+
+@import url("#{$cdnUrl}/test/shared/assets/css/theme.css?v=#{$version}");
+@import url("#{$cdnUrl}/test/shared/assets/css/hl-custom.css?v=#{$version}");
+

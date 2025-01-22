@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+/* FOR USE IN DEV ENVIRONMENT */
+$version: unique_id();
+$cdnUrl: 'https://cdn-dev.hl.com';
+
+/***
+@import './theme.css';
+@import './hl-custom.css';
+ */
+
+@import url("#{$cdnUrl}/dev/shared/assets/css/theme.css?v=#{$version}");
+@import url("#{$cdnUrl}/dev/shared/assets/css/hl-custom.css?v=#{$version}");
+@import "../light-theme-components.scss";
