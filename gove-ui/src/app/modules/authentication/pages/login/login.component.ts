@@ -29,53 +29,53 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // login() {
-  //   this.isSubmitted = true;
-  //   if (this.loginForm.valid) {
-  //     this.isSubmitted = false;
-  //     this.isLoading = true;
-  //     this.userService
-  //       .authenticateUser(
-  //         this.loginForm.value['userName'],
-  //         this.loginForm.value['password']
-  //       )
-  //       .subscribe({
-  //         next: (res: any) => {
-  //           if (res) {
-  //             let token = res?.message?.token;
-  //             localStorage.setItem('userToken', token);
-  //             localStorage.setItem('refreshToken', res?.message?.refreshToken);
-  //             let userInfo = res?.message?.user;
-  //             let userData = {
-  //               userId: userInfo?.userId,
-  //               userName: userInfo?.userName,
-  //               companyName: userInfo?.companyName,
-  //               companyId: userInfo?.companyId,
-  //             };
-  //             const encryptedUserData =
-  //               this.encryptionService.encrypt(userData);
-  //             localStorage.setItem('userDetails', encryptedUserData);
-  //             this.userService.init({
-  //               accessToken: token,
-  //               fullName: userInfo?.userName,
-  //               isAuthenticated: true,
-  //               loginName: userInfo?.userName,
-  //               userId: userInfo?.userId,
-  //               sessionExpireDate: userInfo?.sessionExpireDate,
-  //             });
-  //             localStorage.setItem(
-  //               'sessionExpireDate',
-  //               userInfo?.sessionExpireDate
-  //             );
-  //             this.isLoading = false;
-  //             this.router.navigate(['/dashboard']);
-  //           }
-  //         },
-  //         error: (error: Error) => {
-  //           this.isLoading = false;
-  //           this.toastr.error(error.message, 'Error');
-  //         },
-  //       });
-  //   }
-  //}
+  login() {
+    this.isSubmitted = true;
+    if (this.loginForm.valid) {
+      this.isSubmitted = false;
+      this.isLoading = true;
+      this.userService
+        .authenticateUser(
+          this.loginForm.value['userName'],
+          this.loginForm.value['password']
+        )
+        .subscribe({
+          next: (res: any) => {
+            if (res) {
+              let token = res?.message?.token;
+              localStorage.setItem('userToken', token);
+              localStorage.setItem('refreshToken', res?.message?.refreshToken);
+              let userInfo = res?.message?.user;
+              let userData = {
+                userId: userInfo?.userId,
+                userName: userInfo?.userName,
+                companyName: userInfo?.companyName,
+                companyId: userInfo?.companyId,
+              };
+              const encryptedUserData =
+                this.encryptionService.encrypt(userData);
+              localStorage.setItem('userDetails', encryptedUserData);
+              this.userService.init({
+                accessToken: token,
+                fullName: userInfo?.userName,
+                isAuthenticated: true,
+                loginName: userInfo?.userName,
+                userId: userInfo?.userId,
+                sessionExpireDate: userInfo?.sessionExpireDate,
+              });
+              localStorage.setItem(
+                'sessionExpireDate',
+                userInfo?.sessionExpireDate
+              );
+              this.isLoading = false;
+              this.router.navigate(['/dashboard']);
+            }
+          },
+          error: (error: Error) => {
+            this.isLoading = false;
+            this.toastr.error(error.message, 'Error');
+          },
+        });
+    }
+  }
 }

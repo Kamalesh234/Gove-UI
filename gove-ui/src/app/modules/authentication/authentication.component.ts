@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './authentication.component.scss'
 })
 export class AuthenticationComponent {
-
+  
 }
