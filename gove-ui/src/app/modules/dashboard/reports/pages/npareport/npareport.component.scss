@@ -1,0 +1,211 @@
+:host {
+    width: 100%;
+  }
+  th {
+    font-family: "Book Antiqua", serif;
+    font-size: 15px;  /* Remove quotes around the font-size value */
+    background-color:#173662;
+    color: white; /* Optional: To ensure text is readable */
+   // padding: 8px;
+    text-align: center;
+}
+.right-align {
+    text-align: right;
+  }
+  .left-align {
+    text-align: left;
+  }
+  
+   .yellowbackground {
+    background-color: red !important;
+    color: blue !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background:whitesmoke;
+    border-radius: 8px;
+    width: 100%;  /* Reduced width */
+    height: 94%; /* Reduced height */
+    display: flex;
+    flex-direction: column;
+    padding: 15px; /* Reduced padding */
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-footer {
+    display: flex;
+    justify-content: center;  /* Centers the button horizontally */
+    align-items: center;
+}
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1rem; /* Reduced button size */
+    cursor: pointer;
+}
+.modal-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden; /* Prevent scrolling */
+}
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Decrease Branch Table width */
+    grid-template-rows: 1fr 1fr 3fr; /* Increase height for Segment Table (middle row) */
+    gap: 15px; /* Reduce spacing */
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.branch-table {
+    grid-column:1 / 2 ;
+    grid-row: 1 / 4; /* Take up 2 rows */
+    font-size: 0.75rem; /* Decrease font size */
+    width: 100%;
+    height: 100%; /* Ensure the branch table takes full available height */
+    display: flex;
+    flex-direction: column; /* Ensure the table expands vertically if needed */
+
+}
+
+.segment-table {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2; 
+    font-size: 0.75rem; 
+}
+
+.subsegment-table {
+   grid-column: 2 / 3;
+   grid-row: 2/ 3; /* Position Subsegment Table at bottom-right */
+    font-size: 0.75rem; /* Decrease font size */
+}
+
+.table-title {
+    font-size: 0.9rem; /*  Decrease title font size */
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+  .content-box {
+    width: calc(100% - 250px);
+    margin-left: 255px;
+  height: 100%;
+  margin-top: 50px;
+  
+    // height: 100vh;
+    .tab-box {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        padding: 10px;
+    }
+  
+    .option-button {
+        font-size: 14px; /* Increased font size for better readability */
+        font-weight: 400; /* Slightly bolder for emphasis */
+        line-height: 22px;
+        color: var(--button-text-color);
+        background: var(--background-button);
+        border: unset;
+        padding: 10px 30px; /* Increased padding for a larger button */
+        border-radius: 8px; /* Adjusted for a more rounded look */
+        cursor: pointer; /* Adds a pointer cursor on hover */
+        transition: transform 0.2s ease, background-color 0.3s ease; /* Added missing semicolon */
+        margin: 0 10px;
+    }
+  
+    .bmaproval-details-box {
+        border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+        .breadcrumb{
+          li{
+          color: var(--text-color);
+        }
+        }
+        .bmaproval-details-form {
+            caption {
+                font-size: 20px;
+                color: var(--text-bold-color);
+                padding-top: 0;
+                line-height: 28px;
+                font-weight: 600;
+            }
+  
+            label,
+            input {
+                font-size: 14px;
+                line-height: 18px;
+                font-weight: 400;
+                color: var(--text-color);
+  
+                &:focus {
+                    box-shadow: unset;
+                }
+            }
+  
+            input {
+                border: 1px solid var(--input-border);
+                background-color: var(--input-background);
+                border-radius: 5px;
+                color: var(--text-dark);
+            }
+  
+            .massage-text {
+                color: #f7811e;
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 400;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
+  
+            .next-button {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                color: var(--button-text-color);
+                background: var(--background-button);
+                border: unset;
+                padding: 5px 10px;
+            }
+  
+        }
+  
+    }
+  }
+ 
+  @media only screen and (max-width: 992px) {
+  
+    .content-box {
+        margin-left: 0;
+        width: 100%;
+  
+  
+    }
+  }
+  

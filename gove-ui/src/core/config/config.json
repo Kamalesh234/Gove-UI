@@ -1,0 +1,94 @@
+{
+    "MyRequest": {
+        "SearchKeys": [
+            {
+                "SearchField": "Company Name",
+                "SearchKey": "42b25588-a421-4271-97b8-20b0b48d25fd"
+            },
+            {
+                "SearchField": "Client Number",
+                "SearchKey": "ae2ca5be-3a1e-4095-b9fc-4b727037ff2a"
+            },
+            {
+                "SearchField": "Eng/Opp No",
+                "SearchKey": "9722ad9e-346a-49a3-90a8-aa327879af43"
+            },
+            {
+                "SearchField": "Requester",
+                "SearchKey": "acba3b07-32c4-4a99-b658-3a1369427418"
+            },
+            {
+                "SearchField": "Status",
+                "SearchKey": "9bbecaba-d657-4ea5-bd45-6fadf6dc0278"
+            },
+            {
+                "SearchField": "SubmittedDate",
+                "SearchKey": "44106706-cc35-454a-a914-62a30e350f85"
+            }
+        ],
+        "Table": {
+            "Columns": [
+                {
+                    "columnKey": "15952cef-e312-43ea-b577-db522a4028ac",
+                    "columnName": "SubmittedDate",
+                    "columnOrder": 1,
+                    "disabled": false,
+                    "isHidden": false,
+                    "resizable": true,
+                    "sortable": true,
+                    "field": "submittedDate"
+                },
+                {
+                    "columnKey": "7e9e9874-7947-4d9a-a408-db75350562de",
+                    "columnName": "Description",
+                    "columnOrder": 2,
+                    "disabled": false,
+                    "isHidden": false,
+                    "resizable": true,
+                    "Sortable": false,
+                    "field": "description"
+                },
+                {
+                    "columnKey": "da5d7cbe-447c-4730-974b-4c35bb7679e6",
+                    "columnName": "Eng/Opp No",
+                    "columnOrder": 3,
+                    "disabled": false,
+                    "isHidden": false,
+                    "resizable": true,
+                    "field": "dealNumber"
+                },
+                {
+                    "columnKey": "9c84b7dd-e927-4a65-95dd-74879c13ba75",
+                    "columnName": "Office",
+                    "columnOrder": 4,
+                    "disabled": false,
+                    "isHidden": false,
+                    "resizable": true,
+                    "field": "dealOffice"
+                },
+                {
+                    "columnKey": "new GUID().ToString()",
+                    "columnName": "Status",
+                    "columnOrder": 5,
+                    "disabled": false,
+                    "isHidden": false,
+                    "resizable": true,
+                    "field": "statusName"
+                },
+                {
+                    "columnKey": "new GUID().ToString()",
+                    "columnName": "Conflict Type",
+                    "columnOrder": 6,
+                    "disabled": false,
+                    "isHidden": true,
+                    "resizable": true,
+                    "field": "conflictTypeName"
+                }
+            ]
+        },
+        "DateTimeSettings": {
+            "dateFormatPDT": "M/D/YYYY, H:mm a (ddd)",
+            "timeZoneCode": "America/Los_Angeles"
+        }
+    }
+}

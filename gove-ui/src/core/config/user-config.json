@@ -1,0 +1,38 @@
+{
+    "userSettings": {
+        "myRequests": {
+            "tableSettings": [
+                {
+                    "columnKey": "15952cef-e312-43ea-b577-db522a4028ac",
+                    "columnOrder": 2,
+                    "isHidden": false
+                },
+                {
+                    "columnKey": "7e9e9874-7947-4d9a-a408-db75350562de",
+                    "columnOrder": 1,
+                    "isHidden": false
+                },
+                {
+                    "columnKey": "da5d7cbe-447c-4730-974b-4c35bb7679e6",
+                    "columnOrder": 3,
+                    "isHidden": false
+                },
+                {
+                    "columnKey": "9c84b7dd-e927-4a65-95dd-74879c13ba75",
+                    "columnOrder": 4,
+                    "isHidden": false
+                },
+                {
+                    "columnKey": "f2a0f0c8-a514-4af4-947b-645dc3f5f83f",
+                    "columnOrder": 5,
+                    "isHidden": false
+                },
+                {
+                    "columnKey": "ca941d4c-a77c-40ef-93e2-8aa98c573dff",
+                    "columnOrder": 6,
+                    "isHidden": true
+                }
+            ]
+        }
+    }
+}

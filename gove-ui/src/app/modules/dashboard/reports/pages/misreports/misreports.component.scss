@@ -1,0 +1,243 @@
+:host {
+    width: 100%;
+  }
+  
+  th {
+    font-family: "Book Antiqua", serif;
+    font-size: 15px;
+    background-color: #173662;
+    color: white;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .right-align {
+    text-align: right;
+  }
+  
+  .left-align {
+    text-align: left;
+  }
+  .close-button {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+  .yellowbackground {
+    background-color: red !important;
+    color: blue !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+  }
+  
+  /* ✅ Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  /* ✅ Enable Scrolling in Modal */
+  .modal-content {
+    background: whitesmoke;
+    border-radius: 8px;
+    width: 95%; /* Adjust width for better fit */
+    height: 95%; /* Adjust height */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
+  }
+  
+  .modal-header,
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .summary-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Consistent gap between tables */
+    width: 100%;
+    height: auto;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    align-items: flex-start;
+  }
+  .branch-table {
+    flex: 0 1 calc(33.33% - 20px); /* ✅ Ensures 3 tables per row */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* ✅ Enable both horizontal and vertical scrolling */
+    max-height: 400px; /* ✅ Set max height for scrolling */
+    max-width: 100%;  /* ✅ Ensures tables adjust naturally in the grid */
+  }
+  .branch-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .branch-table th,
+  .branch-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .branch-table th {
+    background-color: #173662;
+    color: white;
+  }
+  
+  .branch-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .branch-table tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  /* ✅ Highlight Total Row */
+  .branch-table .total-row {
+    background-color:yellow;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* ✅ Scrollbar Styling */
+  .branch-table::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .branch-table::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+  
+  .branch-table::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+  }
+  
+    .content-box {
+      width: calc(100% - 250px);
+      margin-left: 255px;
+    height: 100%;
+    margin-top: 50px;
+    
+      // height: 100vh;
+      .tab-box {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 22px;
+          color: var(--text-color);
+          border: 1px solid var(--border-color);
+          border-radius: 5px;
+          padding: 10px;
+      }
+    
+      .option-button {
+          font-size: 14px; /* Increased font size for better readability */
+          font-weight: 400; /* Slightly bolder for emphasis */
+          line-height: 22px;
+          color: var(--button-text-color);
+          background: var(--background-button);
+          border: unset;
+          padding: 10px 30px; /* Increased padding for a larger button */
+          border-radius: 8px; /* Adjusted for a more rounded look */
+          cursor: pointer; /* Adds a pointer cursor on hover */
+          transition: transform 0.2s ease, background-color 0.3s ease; /* Added missing semicolon */
+          margin: 0 10px;
+      }
+    
+      .bmaproval-details-box {
+          border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 10px;
+          .breadcrumb{
+            li{
+            color: var(--text-color);
+          }
+          }
+          .bmaproval-details-form {
+              caption {
+                  font-size: 20px;
+                  color: var(--text-bold-color);
+                  padding-top: 0;
+                  line-height: 28px;
+                  font-weight: 600;
+              }
+    
+              label,
+              input {
+                  font-size: 14px;
+                  line-height: 18px;
+                  font-weight: 400;
+                  color: var(--text-color);
+    
+                  &:focus {
+                      box-shadow: unset;
+                  }
+              }
+    
+              input {
+                  border: 1px solid var(--input-border);
+                  background-color: var(--input-background);
+                  border-radius: 5px;
+                  color: var(--text-dark);
+              }
+    
+              .massage-text {
+                  color: #f7811e;
+                  font-size: 12px;
+                  line-height: 18px;
+                  font-weight: 400;
+                  margin-bottom: 15px;
+                  display: inline-block;
+              }
+    
+              .next-button {
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 22px;
+                  color: var(--button-text-color);
+                  background: var(--background-button);
+                  border: unset;
+                  padding: 5px 10px;
+              }
+    
+          }
+    
+      }
+    }
+   
+   /* ✅ Responsive Design */
+  @media (max-width: 992px) {
+    .branch-table {
+      flex: 0 1 calc(50% - 10px); /* 2 tables per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .branch-table {
+      flex: 0 1 100%; /* 1 table per row on small screens */
+    }
+  }

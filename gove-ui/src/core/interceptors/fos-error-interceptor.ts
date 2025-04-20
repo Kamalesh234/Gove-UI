@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError, timer } from 'rxjs';
-import { GlobalErrorHandlingService } from './../../data/services/shared/global-error-handling.service';
+import { GlobalErrorHandlingService } from '../../data/services/shared/global-error-handling.service';
 import { IFOSBaseResponse } from '../interfaces/IFOSBaseResponse';
 
 @Injectable()

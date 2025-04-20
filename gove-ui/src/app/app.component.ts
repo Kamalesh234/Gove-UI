@@ -7,7 +7,7 @@ import { ThemeService } from '../data/services/shared/theme.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'GOVE';
+  title = 'Gove';
   constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {

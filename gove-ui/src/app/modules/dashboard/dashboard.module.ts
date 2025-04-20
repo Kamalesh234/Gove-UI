@@ -15,17 +15,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { ReportsComponent } from './reports/reports.component';
+import { ReportsModule } from './reports/reports.module';
 @NgModule({
   declarations: [
     DashboardComponent,
-    AdminComponent
+    AdminComponent,
+    ReportsComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
     AdminModule,
+    ReportsModule,
     SharedModule,
     MatTabsModule,
     MatTableModule,

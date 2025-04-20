@@ -1,0 +1,165 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>Collection Report</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3" *ngIf="showScheduleForm">
+        <form class="bmaproval-details-form" [formGroup]="CollectionScheduleReportForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="date" formControlName="CutoffDate" class="form-control mt-2" />             
+            </div>
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+          <button class="option-button d-flex align-items-center" (click)="Savescheduler()">Schedule</button>
+          <button class="option-button d-flex align-items-center" [routerLink]="['/dashboard/reports/collectiontranslader']" >Back</button>
+        </div>          
+      </div>  
+      <div class="bmaproval-details-box my-3" *ngIf="showForm">
+        <form class="bmaproval-details-form" [formGroup]="CollectionForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+                <label>Branch</label>
+                <select formControlName="Branch"  class="form-select mt-2 mb-1"name="Branch">
+                  <option value="" >Select Branch</option>
+                  <option *ngFor="let c of branchLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label>Bucket Type</label>
+                <select formControlName="BucketType"  class="form-select mt-2 mb-1"name="BucketType">
+                    <option value="" >Select BucketType</option>
+                    <option *ngFor="let c of genderLookup" [ngValue]="c.lookupValueId">{{ c.lookupValueDescription }}
+                    </option>
+                  </select>
+              </div>
+            <div class="col-12 col-lg-4">
+                <label>Employee Code</label>
+                <input type="text" matInput formControlName="EmployeeCode" [matAutocomplete]="autocompletePanel"
+              placeholder="Enter the EmployeeCode" required class="form-control mt-2" />
+              <mat-autocomplete #autocompletePanel="matAutocomplete" [displayWith]="displayempFieldName.bind(this)"
+              (optionSelected)="selectEmpCode($event)">
+              <mat-option *ngFor="let option of filteredBranches | async" [value]="option.usercode">
+                <div>{{ option.usercode }}</div>
+              </mat-option>
+            </mat-autocomplete>
+               
+              </div>                    
+          </div>
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="text" formControlName="CutoffDate" class="form-control mt-2" readonly/>             
+            </div>
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+          <button class="option-button d-flex align-items-center" (click)="summary()">Summary</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToExcel()">Excel</button>
+            <button class="option-button d-flex align-items-center" (click) ="clearExcel()">Clear</button>
+          </div>        
+          <div >
+            <td class="center-align">
+              <a href="javascript:void(0);" class="contract-link" (click)="onSummaryCollnClick()">
+                Summary Collection
+              </a>
+            </td>
+            <td class="center-align">
+              <a href="javascript:void(0);" class="contract-link" (click)="onSummaryDueClick()">
+                Summary Dues
+              </a>
+            </td>
+          </div>  
+      </div> 
+      <div *ngIf="showGrid" class="modal-overlay">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button class="close-button" (click)="showSummaryClear()">&times;</button>
+            <div class="summary-grid">
+              <div *ngIf="odData.length > 0" class="table-container branch-table">
+                <h5 class="branch-header">OD Summary</h5>
+                <table class="table table-bordered table-sm">
+                  <thead class="table-dark">
+
+                    <tr>
+                      <th>OD</th>
+                      <th>No. of Conts</th>
+                      <th>No. of Conts with Nil coll</th>
+                      <th>Demand</th>
+                      <th>Colln. till date</th>
+                      <th>%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of odData">
+                      <td class="right-align">{{ item.OD }}</td>
+                      <td class="right-align">{{ item.Total }}</td>
+                      <td class="right-align">{{ item.Null_Records }}</td>
+                      <td class="right-align">{{ item.Total_Demand }}</td>
+                      <td class="right-align">{{ item.Total_PNPA_Amount }}</td>
+                      <td class="right-align">{{ item.Percentage }}</td>
+                    </tr>
+                    <!-- ✅ Total Row for OD -->
+                   
+                  </tbody>
+                </table>
+              </div>
+              <div *ngFor="let branch of branchData" class="table-container branch-table">
+                <h5 class="branch-header">{{ branch.branchName }}</h5>
+      
+                <table class="table table-bordered table-sm">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>OD</th>
+                      <th>No. of Conts</th>
+                      <th>No. of Conts with Nil coll</th>
+                      <th>Demand</th>
+                      <th>Colln. till date</th>
+                      <th>%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of branch.data; index as i">
+                      <td class="left-align">{{ item.OD }}</td>
+                      <td class="right-align">{{ item.Total }}</td>
+                      <td class="right-align">{{ item.Null_Records }}</td>
+                      <td class="right-align">{{ item.Total_Demand }}</td>
+                      <td class="right-align">{{ item.Total_PNPA_Amount }}</td>
+                      <td class="right-align">{{ item.Percentage }}</td>
+                    </tr>
+      
+                    <!-- ✅ Total Row -->
+                    <tr [ngStyle]="{'background-color': 'red', 'color': 'white', 'font-weight': 'bold'}">
+                      <td colspan="1">Total</td>
+                      <td class="right-align">{{ branch.totalCount }}</td>
+                      <td class="right-align">{{branch.totalOD}}</td>
+                      <td class="right-align">{{ branch.totalDemand }}</td>
+                      <td class="right-align">{{ branch.totalPNPA }}</td>
+                      <td class="right-align"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      
+            </div>
+          </div>
+      
+          <div class="modal-footer">
+            <button class="option-button d-flex align-items-center" (click)="showSummaryexcel()">Excel</button>
+            <button class="option-button d-flex align-items-center" (click)="showSummaryClear()">Close</button>
+          </div>
+        </div>
+      </div>
+    
+          
+    </div>
+  </div>

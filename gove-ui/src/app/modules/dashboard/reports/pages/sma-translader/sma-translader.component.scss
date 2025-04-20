@@ -1,0 +1,166 @@
+:host {
+    width: 100%;
+  }
+  th {
+    font-family: "Book Antiqua", serif;
+    font-size: 15px;  /* Remove quotes around the font-size value */
+    background-color:#173662;
+    color: white; /* Optional: To ensure text is readable */
+   // padding: 8px;
+    text-align: center;
+}
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: #ddd;
+    border-bottom: 1px solid #ccc;
+}
+
+.disabled-icon {
+  pointer-events: none; /* Prevents clicks */
+  opacity: 0.5; /* Makes it look disabled */
+  cursor: not-allowed;
+}
+
+  .summary-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .table-container {
+    width: 89%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto; /* Centers the container */
+}
+.test {
+  width: 97%;
+  padding-left: 13%;
+}
+.paginator {
+    display: flex;
+   width: 89%; /* Match table-container width */
+   justify-content: center; /* Centers paginator */
+    flex-direction: column;
+    background: white;
+    align-items: center; /* Ensures the paginator is centered */
+}
+  
+  .custom-table {
+    width: 75%; /* Adjust as needed */
+    margin: auto; /* Centers the table */
+    text-align: center;
+  }
+  .content-box {
+    width: calc(100% - 250px);
+    margin-left: 255px;
+  height: 100%;
+  margin-top: 50px;
+  
+    // height: 100vh;
+    .tab-box {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        padding: 10px;
+    }
+  
+    .option-button {
+        font-size: 14px; /* Increased font size for better readability */
+        font-weight: 400; /* Slightly bolder for emphasis */
+        line-height: 22px;
+        color: var(--button-text-color);
+        background: var(--background-button);
+        border: unset;
+        padding: 10px 30px; /* Increased padding for a larger button */
+        border-radius: 8px; /* Adjusted for a more rounded look */
+        cursor: pointer; /* Adds a pointer cursor on hover */
+        transition: transform 0.2s ease, background-color 0.3s ease; /* Added missing semicolon */
+        margin: 0 10px;
+    }
+  
+    .bmaproval-details-box {
+        border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+        .breadcrumb{
+          li{
+          color: var(--text-color);
+        }
+        }
+        .bmaproval-details-form {
+            caption {
+                font-size: 20px;
+                color: var(--text-bold-color);
+                padding-top: 0;
+                line-height: 28px;
+                font-weight: 600;
+            }
+  
+            label,
+            input {
+                font-size: 14px;
+                line-height: 18px;
+                font-weight: 400;
+                color: var(--text-color);
+  
+                &:focus {
+                    box-shadow: unset;
+                }
+            }
+  
+            input {
+                border: 1px solid var(--input-border);
+                background-color: var(--input-background);
+                border-radius: 5px;
+                color: var(--text-dark);
+            }
+  
+            .massage-text {
+                color: #f7811e;
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 400;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
+  
+            .next-button {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                color: var(--button-text-color);
+                background: var(--background-button);
+                border: unset;
+                padding: 5px 10px;
+            }
+  
+        }
+  
+    }
+  }
+ 
+  @media only screen and (max-width: 992px) {
+  
+    .content-box {
+        margin-left: 0;
+        width: 90%;
+  
+  
+    }
+  }
+  

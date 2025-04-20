@@ -1,0 +1,98 @@
+{
+  "NAV_ITEMS": [
+    {
+      "Role_Code_ID": 1,
+      "Module_ID": 1,
+      "Module_Name": "System Admin",
+      "Program_ID": 1,
+      "Program_Code": "CMPN",
+      "Program_Name": "Company Master",
+      "Program_Url": "company-master"
+    },  
+    {
+      "Role_Code_ID": 2,
+      "Module_ID": 1,
+      "Module_Name": "System Admin",
+      "Program_ID": 2,
+      "Program_Code": "UMGT",
+      "Program_Name": "User Management",
+      "Program_Url": "user-management"
+    },
+    {
+      "Role_Code_ID": 3,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 3,
+      "Program_Code": "NPMR",
+      "Program_Name": "NPA Report - Management",
+      "Program_Url": "npareport"
+    },
+    {
+      "Role_Code_ID": 6,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 6,
+      "Program_Code": "NPAO",
+      "Program_Name": "NPA Report - Operational",
+      "Program_Url": "npareport-opertional"
+    },
+    {
+      "Role_Code_ID": 4,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 3,
+      "Program_Code": "NPAH",
+      "Program_Name": "NPA History",
+      "Program_Url": "npahistory"
+    },
+    {
+      "Role_Code_ID": 5,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 3,
+      "Program_Code": "SMIR",
+      "Program_Name": "SMA Report",
+      "Program_Url": "smareport_translader"
+    },
+    {
+      "Role_Code_ID": 7,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 7,
+      "Program_Code": "CLLR",
+      "Program_Name": "Collection Report",
+      "Program_Url": "collectiontranslader"
+
+    },
+    {
+      "Role_Code_ID": 8,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 8,
+      "Program_Code": "MISR",
+      "Program_Name": "MIS Report",
+      "Program_Url": "mistranslader"
+
+    },
+    {
+      "Role_Code_ID": 9,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 9,
+      "Program_Code": "SICR",
+      "Program_Name": "Sales Incentive Report",
+      "Program_Url": "salesincentive"
+
+    },
+    {
+      "Role_Code_ID": 10,
+      "Module_ID": 2,
+      "Module_Name": "Reports",
+      "Program_ID": 10,
+      "Program_Code": "CICR",
+      "Program_Name": "Collection Incentive Report",
+      "Program_Url": "collectionincentive"
+
+    }
+  ]
+}

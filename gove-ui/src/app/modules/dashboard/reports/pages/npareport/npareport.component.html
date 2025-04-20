@@ -1,0 +1,235 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>NPA Report - Management</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3">
+        <form class="bmaproval-details-form" [formGroup]="NpaReportForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Branch</label>
+              <select formControlName="Branch"  class="form-select mt-2 mb-1"name="Branch">
+                <option value="" >Select Branch</option>
+                <option *ngFor="let c of branchLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                </option>
+              </select>
+            </div>
+            <div class="col-12 col-lg-4">
+                <label>Segment</label>
+                <select formControlName="Segment"  class="form-select mt-2 mb-1"name="Segment">
+                    <option value="" >Select Segment</option>
+                    <option *ngFor="let c of categoryLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                    </option>
+                  </select>
+              </div>
+            <div class="col-12 col-lg-4">
+                <label>Sub Segement</label>
+                <select formControlName="SubSegment"  class="form-select mt-2 mb-1"name="SubSegment">
+                    <option value="" >Select SubSegment</option>
+                    <option *ngFor="let c of genderLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                    </option>
+                  </select>
+              </div>
+            <div class="col-12 col-lg-4">
+              <label>Account Number</label>
+              <input type="text" placeholder="Enter Account Number" formControlName="Accountnumber" class="form-control mt-2">
+              <!-- <input type="text" matInput placeholder="Enter Account Number"
+                [formControl]="Accountnumber"
+                [matAutocomplete]="auto" class="form-control mt-2">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let acc of filteredAccountNumbers | async" [value]="acc">
+                  {{ acc }}
+                </mat-option>
+              </mat-autocomplete> -->
+            </div>
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="date" formControlName="CutoffDate" class="form-control mt-2"/>             
+            </div>
+            <div class="col-12 col-lg-4">
+              <label>Denomination</label>
+              <select formControlName="Denomination" class="form-select mt-2 mb-1" name="Denomination"
+              (change)="updateDenomination($event)">
+              <option value="">Select Denomination</option>
+              <option *ngFor="let c of denominationLookup" [value]="c.lookupValueId">
+                {{ c.lookupValueDescription }}
+              </option>
+            </select>                
+            </div>                   
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+           <button class="option-button d-flex align-items-center" (click)="showSummary()">Summary</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToExcel()">Excel</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToSOA()">SOA</button>
+            <button class="option-button d-flex align-items-center" (click)="clearExcel()">Clear</button>
+            <button class="option-button d-flex align-items-center" (click)="Savescheduler()">Schedule</button>
+          </div>          
+      </div>
+     <!-- Popup Modal -->
+     <div *ngIf="showGrid" class="modal-overlay">
+     
+      <div class="modal-content">
+        <!-- Dropdowns inside the Modal Header -->
+        <div class="modal-header">
+          <div class="row w-100">
+            <!-- Branch Dropdown -->
+            <div class="col-12 col-lg-4">
+              <label>Branch</label>
+              <select [(ngModel)]="selectedBranch" (change)="filterTableData()" class="form-select mt-2 mb-1" name="Branch">
+                <option value="">Select Branch</option>
+                <option *ngFor="let c of branchLookup" [ngValue]="c.lookupValueDescription">
+                  {{ c.lookupValueDescription }}
+                </option>
+              </select>
+            </div>
+            
+            <!-- Segment Dropdown -->
+            <div class="col-12 col-lg-4">
+              <label>Segment</label>
+              <select [(ngModel)]="selectedSegment" (change)="filterTableData()" class="form-select mt-2 mb-1" name="Segment">
+                <option value="">Select Segment</option>
+                <option *ngFor="let c of categoryLookup" [ngValue]="c.lookupValueDescription">
+                  {{ c.lookupValueDescription }}
+                </option>
+              </select>
+            </div>
+    
+            <!-- Subsegment Dropdown -->
+            <div class="col-12 col-lg-4">
+              <label>Sub Segment</label>
+              <select [(ngModel)]="selectedSubSegment" (change)="filterTableData()"  class="form-select mt-2 mb-1" name="SubSegment">
+                <option value="">Select SubSegment</option>
+                <option *ngFor="let c of genderLookup" [ngValue]="c.lookupValueDescription">
+                  {{ c.lookupValueDescription }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button class="close-button" (click)="closeSummary()">&times;</button>
+        </div>
+    
+        <div class="modal-body">
+          <div class="summary-grid">
+            <!-- Branch Table -->
+            <div *ngIf="branchData.length > 0" class="table-container branch-table">
+              <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>S.NO</th>
+                    <th>Branch</th>
+                    <th>Count</th>
+                    <th>Gross NPA</th>
+                    <th>Provisions</th>
+                    <th>Net NPA</th>
+                    <th>AUM</th>
+                    <th>GNPA%</th>
+                    <th>NNPA%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of branchData; index as i"
+                      [ngStyle]="item.summary_Branch === 'Total' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                      <td *ngIf="item.summary_Branch !== 'Total'">{{ i + 1 }}</td>
+                      <td *ngIf="item.summary_Branch === 'Total'"></td>
+                    <td class="left-align">{{ item.summary_Branch }}</td>
+                    <td class="right-align">{{ item.branch_Count }}</td>
+                    <td class="right-align">{{ item.branch_GrossNPA }}</td>
+                    <td class="right-align">{{ item.branch_Provisions }}</td>
+                    <td class="right-align">{{ item.branch_NetNPA }}</td>
+                    <td class="right-align">{{ item.branch_AUM }}</td>
+                    <td class="right-align">{{ item.branch_GNPA }}</td>
+                    <td class="right-align">{{ item.branch_NNPA }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="segmentData.length > 0" class="table-container segment-table">
+              <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>S.NO</th>
+                    <th>Segment</th>
+                    <th>Count</th>
+                    <th>Gross NPA</th>
+                    <th>Provisions</th>
+                    <th>Net NPA</th>
+                    <th>AUM</th>
+                    <th>GNPA%</th>
+                    <th>NNPA%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of segmentData; index as i"
+                      [ngStyle]="item.summary_Segment === 'Total' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                    <td *ngIf="item.summary_Segment !== 'Total'">{{ i + 1 }}</td>
+                    <td *ngIf="item.summary_Segment === 'Total'"></td>
+                    <td class="left-align">{{ item.summary_Segment }}</td>
+                    <td class="right-align">{{ item.segment_Count }}</td>
+                    <td class="right-align">{{ item.segment_GrossNPA }}</td>
+                    <td class="right-align">{{ item.segment_Provisions }}</td>
+                    <td class="right-align">{{ item.segment_NetNPA }}</td>
+                    <td class="right-align">{{ item.segment_AUM }}</td>
+                    <td class="right-align">{{ item.segment_GNPA }}</td>
+                    <td class="right-align">{{ item.segment_NNPA }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+    
+            <div *ngIf="subsegmentData.length > 0" class="table-container subsegment-table">
+              <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>S.NO</th>
+                    <th>Sub Segment</th>
+                    <th>Count</th>
+                    <th>Gross NPA</th>
+                    <th>Provisions</th>
+                    <th>Net NPA</th>
+                    <th>AUM</th>
+                    <th>GNPA%</th>
+                    <th>NNPA%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of subsegmentData; index as i"
+                      [ngStyle]="{
+                        'background-color': item.summary_Subsegment === 'Total' ? 'red' : 'transparent',
+                        'color': item.summary_Subsegment === 'Total' ? 'blue' : 'inherit',
+                        'font-weight': item.summary_Subsegment === 'Total' ? 'bold' : 'normal',
+                        'font-size': item.summary_Subsegment === 'Total' ? '14px' : 'inherit'
+                      }">
+                      <td *ngIf="item.summary_Subsegment !== 'Total'">{{ i + 1 }}</td>
+                      <td *ngIf="item.summary_Subsegment === 'Total'"></td>
+                    <td class="left-align">{{ item.summary_Subsegment }}</td>
+                    <td class="right-align">{{ item.subsegment_Count }}</td>
+                    <td class="right-align">{{ item.subsegment_GrossNPA }}</td>
+                    <td class="right-align">{{ item.subsegment_Provisions }}</td>
+                    <td class="right-align">{{ item.subsegment_NetNPA }}</td>
+                    <td class="right-align">{{ item.subsegment_AUM }}</td>
+                    <td class="right-align">{{ item.subsegment_GNPA }}</td>
+                    <td class="right-align">{{ item.subsegment_NNPA }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    
+        <div class="modal-footer">
+          <button class="option-button d-flex align-items-center" (click)="showSummaryexcel()">EXECL</button>
+          <button class="option-button d-flex align-items-center" (click)="showSummaryPDF()">PDF</button>
+          <button class="option-button d-flex align-items-center" (click)="showSummaryClear()">Close</button>
+        </div>
+      </div>
+
+     </div>        
+    </div>
+  </div>

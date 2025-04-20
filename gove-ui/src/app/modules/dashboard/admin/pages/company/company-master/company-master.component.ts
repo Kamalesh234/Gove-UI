@@ -102,7 +102,7 @@ export class CompanyMasterComponent implements OnInit {
             this.companyMasterData = data.message as CompanyMasterGet;
             this.companyMasterForm
               .get('companyCode')!
-              .setValue(this.companyMasterData.companyCode);
+              .setValue(this.companyMasterData.company_Code);
 
             this.companyMasterForm
               .get('companyName')!
@@ -110,7 +110,7 @@ export class CompanyMasterComponent implements OnInit {
 
             this.companyMasterForm
               .get('constitutionalStatus')!
-              .setValue(this.companyMasterData.constitutionalStatus);
+              .setValue(this.companyMasterData.constitutional_Status);
 
             this.companyMasterForm
               .get('city')!
@@ -134,7 +134,7 @@ export class CompanyMasterComponent implements OnInit {
 
             this.corporateDetailsForm
               .get('ceoName')!
-              .setValue(this.companyMasterData.cdCeoHeadName);
+              .setValue(this.companyMasterData.cdceoHeadName);
 
             this.corporateDetailsForm
               .get('mobileNumber')!
@@ -146,7 +146,7 @@ export class CompanyMasterComponent implements OnInit {
 
             this.corporateDetailsForm
               .get('email')!
-              .setValue(this.companyMasterData.cdEmailId);
+              .setValue(this.companyMasterData.cdEmailID);
 
             this.corporateDetailsForm
               .get('website')!
@@ -158,7 +158,7 @@ export class CompanyMasterComponent implements OnInit {
 
             this.corporateDetailsForm
               .get('gstNumber')!
-              .setValue(this.companyMasterData.gstNumber);
+              .setValue(this.companyMasterData.gsT_Number);
 
             this.otherDetailsForm
               .get('communicationAddress')!
@@ -206,7 +206,7 @@ export class CompanyMasterComponent implements OnInit {
 
             this.otherDetailsForm
               .get('remarks')!
-              .setValue(this.companyMasterData.odRemarks);
+              .setValue(this.companyMasterData.oD_Remarks);
           }
           this.loaderService.hideLoader();
         },

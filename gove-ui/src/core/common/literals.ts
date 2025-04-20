@@ -88,7 +88,7 @@ export const FOSCCApiQueryParams = {
  * Literals for the API end points
  * **/
 export const FOSApiEndPoints = {
-  PROSPECT_LOOKUP_API: '/api/Prospects/GetProspectLookup',
+  PROSPECT_LOOKUP_API: '/api/User/GetProspectLookup',
   BRANCH_LOOKUP_API: '/api/Prospects/GetBranchLocations',
   STATES_LOOKUP_API: '/api/Prospects/GetStates',
   EXISTING_PROSPECT_API: '/api/Prospects/GetExistingProspectDetailsForCustomer',
@@ -104,23 +104,23 @@ export const FOSApiEndPoints = {
   REQUEST_API: '/requests/',
   REQUEST_INTERESTED_PARTY_API: '/request/:id/interested-parties',
   INTERESTED_PARTY_CONFIG_LOCAL: '/core/config/interested-party-config.json',
-  USER_LOGIN_API: '/api/Auth/GetUserByUserNameAndPassword',
+  USER_LOGIN_API: '/api/Auth/GetLoginDetails',
   USER_REFRESH_TOKEN_API: '/api/Auth/RefreshToken',
-  SIDEBAR_API: '/api/Home/GetUserMenus/{userId}',
-  COMPANY_MASTER_FETCH_API: '/api/Prospects/GetCompanyMasterDetails',
+  SIDEBAR_API: '/api/Auth/GetUserMenus/{userId}',
+  COMPANY_MASTER_FETCH_API: '/api/Company/GetCompanyMaster',
   EXPORT_PROSPECTS:
     '/api/Prospects/ExportProspectData?fileOutputType={fileOutputType}',
   GET_DOCUMENT_CATEGORIES:
     '/api/Prospects/GetDocumentCategories?companyId={companyId}&userId={userId}',
   Users: {
-    USER_LEVEL_LOOKUP_API: '/api/UserManagement/GetUserlevelLookup',
+    USER_LEVEL_LOOKUP_API: '/api/User/GetUserlevelLookup',
     USER_REPORTING_LEVEL_LOOKUP_API:
-      '/api/UserManagement/GetUserreportinglevel',
-    USER_DESIGNATION_LOOKUP_API: '/api/UserManagement/GetUserdesignationlevel',
-    USER_INSERT_API: '/api/UserManagement/UserInsert',
-    USER_EXISTING_DETAILS_API: '/api/UserManagement/GetExistingUserDetails',
+      '/api/User/GetUserreportinglevel',
+    USER_DESIGNATION_LOOKUP_API: '/api/User/GetUserdesignationlevel',
+    USER_INSERT_API: '/api/User/UserInsert',
+    USER_EXISTING_DETAILS_API: '/api/User/GetUserDetails',
     USER_EXISTING_DETAILS_TRANSLANDER_API:
-      '/api/UserManagement/GetUserTranslander',
+      '/api/User/UserTranslander',
   },
   Leads: {
     GET_ASSETLOOKUP: '/api/Leads/GetAssetLookup',
@@ -140,26 +140,20 @@ export const FOSApiEndPoints = {
     GET_FIELDEXECUTIVES:
       '/api/Leads/GetFieldExecutives?companyId={companyId}&userId={userId}&prefix=FOS',
   },
-  Fvr: {
-    GET_FVR_HIRER_LOOKUP:
-      '/api/FieldVerification/GetFvrHirerLookup?companyId={companyId}&userId={userId}',
-    GET_FVR_ASSET_LOOKUP:
-      '/api/FieldVerification/GetFvrAssetLookup?companyId={companyId}&userId={userId}',
-    GET_FVR_NEIGHBOUR_LOOKUP:
-      '/api/FieldVerification/GetFvrNeighbourLookup?companyId={companyId}&userId={userId}',
-    GET_FVR_NEIGHBOURHOOD_DETAILS:
-      '/api/FieldVerification/GetFvrNeighbourHoodDetails?companyId={companyId}&userId={userId}&leadId={leadId}&fieldVerificationId={fieldVerificationId}',
-    GET_LEAD_ASSET_DETAILS:
-      '/api/FieldVerification/GetLeadAssetDetails?companyId={companyId}&userId={userId}&leadNumber={leadNumber}&vehicleNumber={vehicleNumber}',
-    GET_LEAD_HIRER_DETAILS:
-      '/api/FieldVerification/GetLeadHirerDetails?companyId={companyId}&userId={userId}&mode={mode}&leadNumber={leadNumber}&vehicleNumber={vehicleNumber}',
-    POST_FVR_HIRER_DETAILS:
-      '/api/FieldVerification/AddFvrHirerDetail?companyId={companyId}&leadId={leadId}',
-    POST_FVR_ASSET_DETAILS:
-      '/api/FieldVerification/AddFvrAssetDetail?companyId={companyId}&userId={userId}&leadId={leadId}',
-    GET_FVR_GUARANTOR_DETAILS:
-      '/api/FieldVerification/GetFvrGuarantorDetails?companyId={companyId}&userId={userId}&leadId={leadId}&personType={personType}',
-  },
+  Reports:{
+       GetBranchLookup:'/api/Reports/GetBrachLookup',
+      // GetNpaReportDetails:'/api/Reports/GetNpareportdetails',
+       GetNpaSummarydetails:'/api/Reports/GetNpaSummarydetails',
+       GetSOAdetails:'/api/Reports/GetSoadetails',
+       GetNpaHistorydetails:'/api/Reports/GetNpaHistorydetails',
+       GetEmpCodeLookup :'/api/Reports/GetEmployeeCodeLookup',
+       GetSMATransladerdetails:'/api/Reports/GetSMATrranslanderdetails',
+       GetCollectiondetails:'/api/Reports/GetCollectiondetails',
+       GetMISreportdetails:'/api/Reports/GetMisReportdetails',
+       GetSalesIncentivedetails:'/api/Reports/GetSaleincentiveReport',
+       GetCollectionIncentivedetails:'/api/Reports/GetCollectionincentiveReport'
+  }
+ 
 };
 
 /**

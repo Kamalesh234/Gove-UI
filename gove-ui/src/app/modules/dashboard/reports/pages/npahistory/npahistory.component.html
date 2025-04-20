@@ -1,0 +1,71 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>NPA History</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3">
+        <form class="bmaproval-details-form" [formGroup]="NpaHistoryForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Account Number</label>
+              <input type="text" placeholder="Enter Account Number" formControlName="Accountnumber" class="form-control mt-2">
+            </div>
+            <div class="col-12 col-lg-4">
+              <label>From Date</label>
+              <input type="date" formControlName="FromDate" class="form-control mt-2"/>             
+            </div>
+            <div class="col-12 col-lg-4">
+                <label>To Date</label>
+                <input type="date" formControlName="ToDate" class="form-control mt-2"/>             
+              </div>                   
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+          <button class="option-button d-flex align-items-center" (click)="Go()">Go</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToExcel()">Excel</button>
+            <button class="option-button d-flex align-items-center" (click)="clearExcel()">Clear</button>
+          </div>          
+      </div>
+      <div *ngIf="showGrid" class="modal-overlay">
+        <div class="modal-body">
+          <div class="summary-grid">
+            <div *ngIf="branchData.length > 0" class="table-container branch-table">
+              <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Contract No</th>
+                    <th>NPA Process Date</th>
+                    <th>NPA Entry Date</th>
+                    <th>NPA Exit Date</th>
+                    <th>NPA Category</th>
+                    <th>DMinDt</th>
+                    <th>Due Amount</th>
+                    <th>DPD Days</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of branchData; index as i"
+                    [ngStyle]="item.npaCategory === 'NPA' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                  <td class="left-align">{{ item.panum }}</td>
+                  <td class="right-align">{{ item.npA_Process_Date }}</td>
+                  <td class="right-align">{{ item.npA_Entry_Date }}</td>
+                  <td class="right-align">{{ item.npA_Exit_Date || '' }}</td>
+                  <td class="left-align">{{ item.npaCategory }}</td>
+                  <td class="right-align">{{ item.dMinDt }}</td>
+                  <td class="right-align">{{ item.dueAmount }}</td>
+                  <td class="right-align">{{ item.dpD_Days }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('userToken', token);
               localStorage.setItem('refreshToken', res?.message?.refreshToken);
               let userInfo = res?.message?.user;
+              localStorage.setItem('User_ID', userInfo?.userId);
               let userData = {
                 userId: userInfo?.userId,
                 userName: userInfo?.userName,

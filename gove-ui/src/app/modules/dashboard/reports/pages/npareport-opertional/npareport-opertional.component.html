@@ -1,0 +1,129 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>NPA Report - Opertional</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3">
+        <form class="bmaproval-details-form" [formGroup]="NpaOpertionalForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+                <label>Branch</label>
+                <select formControlName="Branch"  class="form-select mt-2 mb-1"name="Branch">
+                  <option value="" >Select Branch</option>
+                  <option *ngFor="let c of branchLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                  </option>
+                </select>
+              </div>
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="date" formControlName="CutoffDate" class="form-control mt-2"/>             
+            </div>
+            <div class="col-12 col-lg-4">
+                <label>Employee Code</label>
+                <input type="text" matInput formControlName="EmployeeCode" [matAutocomplete]="autocompletePanel"
+              placeholder="Enter the EmployeeCode" required class="form-control mt-2" />
+              <mat-autocomplete #autocompletePanel="matAutocomplete" [displayWith]="displayempFieldName.bind(this)"
+              (optionSelected)="selectEmpCode($event)">
+              <mat-option *ngFor="let option of filteredBranches | async" [value]="option.usercode">
+                <div>{{ option.usercode }}</div>
+              </mat-option>
+            </mat-autocomplete>
+               
+              </div>                    
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+          <button class="option-button d-flex align-items-center" (click)="SOAexcel()">Go</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToExcel()">Excel</button>
+            <button class="option-button d-flex align-items-center" (click)="clearExcel()">Clear</button>
+          </div>          
+      </div>
+      <div *ngIf="showGrid" class="modal-overlay">
+        <div class="modal-body">
+          <div class="summary-grid">
+            <div *ngIf="branchData.length > 0" class="table-container branch-table">
+              <table class="table table-bordered table-sm custom-table">
+                <thead class="table-dark">
+                  <tr>
+                    <th style="text-align: center;">Contract No</th>
+                    <th style="text-align: center;">DMin Dt</th>
+                    <th style="text-align: center;">Lst Refdt</th>
+                    <th style="text-align: center;">DFARv</th>
+                    <th style="text-align: center;">DFCRv</th>
+                    <th style="text-align: center;">FFARv</th>
+                    <th style="text-align: center;">O/S</th>
+                    <th style="text-align: center;">DPD Days</th>
+                    <th style="text-align: center;">%</th>
+                    <th style="text-align: center;">Branch</th>
+                    <th style="text-align: center;">User Code</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of branchData; index as i"
+                    [ngStyle]="item.npaCategory === 'NPA' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                    <td class="left-align">
+                        <a href="javascript:void(0);" (click)="logPanum(item.panum)" class="contract-link">
+                          {{ item.panum }}
+                        </a>
+                      </td>
+                      <td class="right-align" style="font-size: 16px; width: 200px;">{{ item.dMinDt || '-' }}</td>
+                      <td class="right-align" style="font-size: 16px; width: 200px;">{{ item.lstRefdt || '-' }}</td>
+                      <td class="right-align">{{ item.dfaRv || '-' }}</td>
+                      <td class="right-align">{{ item.dfcRv || '-' }}</td>
+                      <td class="right-align">{{ item.ffaRv || '-' }}</td>
+                      <td class="right-align">{{ item.os || '-' }}</td>
+                      <td class="right-align">{{ item.dpD_Days || '-' }}</td>
+                      <td class="right-align">{{ item.percteage || '-' }}</td> 
+                    <td class="left-align">{{ item.branch }}</td>
+                    <td  class="left-align">{{ item.usercode }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Modal Overlay -->
+<!-- <div *ngIf="showPopup" class="modal-overlay1" (click)="closePopup()">
+    <div class="modal-body1" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <table class="table table-bordered table-sm">
+          <thead class="table-dark">
+            <tr>
+              <th>CONTNO</th>
+              <th>DMin Dt</th>
+              <th>Lst Refdt</th>
+              <th>DFARv</th>
+              <th>DFCRv</th>
+              <th>FFARv</th>
+              <th>O/S</th>
+              <th>DPD Days</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of existingDetails">
+              <td>{{ item.contno || '-' }}</td>
+              <td>{{ item.dMinDt || '-' }}</td>
+              <td>{{ item.lstRefdt || '-' }}</td>
+              <td>{{ item.dfaRv || '-' }}</td>
+              <td>{{ item.dfcRv || '-' }}</td>
+              <td>{{ item.ffaRv || '-' }}</td>
+              <td>{{ item.os || '-' }}</td>
+              <td>{{ item.dpD_Days || '-' }}</td>
+              <td>{{ item.percteage || '-' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> -->
+      
+    </div>
+  </div>

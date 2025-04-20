@@ -8,15 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    children: [
-      // {
-      //   path:'',
-      //   component:ListingPageComponent
-      // },
+    children: [     
       {
         path: 'system-admin',
         loadChildren: () =>
           import('././admin/admin.module').then((m) => m.AdminModule),
+      },
+      {
+        path: 'reports',
+        loadChildren: () =>
+          import('./reports/reports.module').then((m) => m.ReportsModule),
+        //  canActivate: [AuthGuard],
       },
       {
         path: 'access-denied',

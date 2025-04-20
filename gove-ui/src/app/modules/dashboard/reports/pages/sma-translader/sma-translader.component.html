@@ -1,0 +1,85 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>SMA Report - Translander</li>
+            
+          </ol>
+        </nav>
+      </div>
+      
+      <div class="bmaproval-details-box my-3" >
+        <form class="bmaproval-details-form" [formGroup]="SmiTransladerForm"> 
+          <div class="row d-flex gy-2">         
+           
+            <div class="col-12 col-lg-4">
+              <label>From Date</label>
+              <input type="date" formControlName="FromDate" class="form-control mt-2"/>             
+            </div>
+            <div class="col-12 col-lg-4">
+                <label>To Date</label>
+                <input type="date" formControlName="ToDate" class="form-control mt-2"/>             
+              </div>                   
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+            <button class="option-button d-flex align-items-center" (click)="SmiTranslader()">Search</button>
+            <button class="option-button d-flex align-items-center" (click)="view('1', 'create','')">Create</button>
+            <button class="option-button d-flex align-items-center" (click)="clear()">Clear</button>
+          </div>          
+      </div>
+      <div *ngIf="showGrid" class="modal-overlay">
+        <div class="modal-body">
+          <div class="summary-grid">
+            <div *ngIf="branchData.length > 0" class="table-container branch-table">
+              <table class="table table-bordered table-sm custom-table">
+                <thead class="table-dark">
+                  <tr>
+                    <th style="width: 50px; text-align: center;">Query</th>
+                    <th style="width: 50px; text-align: center;">Schedule ID</th>
+                    <th style="width: 50px; text-align: center;">Schedule Date</th>
+                    <th style="width: 50px; text-align: center;">Status</th>
+                    <th style="width: 50px; text-align: center;">User Code</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of paginatedBranchData; index as i"
+                      [ngStyle]="item.npaCategory === 'NPA' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                    <td style="text-align: center;">
+                      <mat-icon 
+                        (click)="view(item.Schedule_ID, 'view',item.Schedule_Date)" 
+                        style="cursor: pointer; width: 24px; height: 24px;"
+                        [ngClass]="{'disabled-icon': item.LookupValue_Description !== 'Completed'}"
+                        [attr.disabled]="item.LookupValue_Description !== 'Completed' ? true : null">
+                        search
+                      </mat-icon>
+                    </td>
+                    <td class="right-align">{{ item.Schedule_ID }}</td>
+                    <td class="right-align">{{ item.Schedule_Date}}</td>
+                    <td class="left-align">{{ item.LookupValue_Description || '' }}</td>
+                    <td class="left-align">{{ item.UserCode || '' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+      
+              <!-- Paginator -->
+               <div class="test">
+              <div class="paginator">
+                <mat-paginator #paginator
+                               [length]="branchData.length"
+                               [pageSize]="5"
+                               [pageSizeOptions]="[5, 10, 25]"
+                               (page)="updatePaginatedData()"
+                               showFirstLastButtons>
+                </mat-paginator>
+              </div>
+            </div>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

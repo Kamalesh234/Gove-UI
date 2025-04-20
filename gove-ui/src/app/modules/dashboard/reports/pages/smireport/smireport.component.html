@@ -1,0 +1,157 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>SMA Report</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3" *ngIf="showScheduleForm">
+        <form class="bmaproval-details-form" [formGroup]="SMAScheduleReportForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="date" formControlName="CutoffDate" class="form-control mt-2" />             
+            </div>
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+            <button class="option-button d-flex align-items-center" (click)="Savescheduler()">Schedule</button>
+            <button class="option-button d-flex align-items-center" [routerLink]="['/dashboard/reports/smareport_translader']" >Back</button>
+          </div>          
+      </div>
+      <div class="bmaproval-details-box my-3" *ngIf="showForm">
+        <form class="bmaproval-details-form" [formGroup]="SMAReportForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Branch</label>
+              <select formControlName="Branch"  class="form-select mt-2 mb-1"name="Branch">
+                <option value="" >Select Branch</option>
+                <option *ngFor="let c of branchLookup" [ngValue]="c.lookupValueDescription">{{ c.lookupValueDescription }}
+                </option>
+              </select>
+            </div>
+            <div class="col-12 col-lg-4">
+                <label>SMA Type</label>
+                <select formControlName="SMAType"  class="form-select mt-2 mb-1"name="SMAType">
+                    <option value="" >Select SMAType</option>
+                    <option *ngFor="let c of genderLookup" [ngValue]="c.lookupValueId">{{ c.lookupValueDescription }}
+                    </option>
+                  </select>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label>Employee Code</label>
+                <input type="text" matInput formControlName="EmployeeCode" [matAutocomplete]="autocompletePanel"
+              placeholder="Enter the EmployeeCode" required class="form-control mt-2" />
+              <mat-autocomplete #autocompletePanel="matAutocomplete" [displayWith]="displayempFieldName.bind(this)"
+              (optionSelected)="selectEmpCode($event)">
+              <mat-option *ngFor="let option of filteredBranches | async" [value]="option.lookupValueDescription">
+                <div>{{ option.lookupValueDescription }}</div>
+              </mat-option>
+            </mat-autocomplete>
+                <!-- <select formControlName="EmployeeCode"  class="form-select mt-2 mb-1"name="EmployeeCode">
+                    <option value="" >Select EmployeeCode</option>
+                    <option *ngFor="let c of empcodeLookup" [ngValue]="c.staffan">{{c.usercode }}
+                    </option>
+                  </select> -->
+              </div>                 
+          </div>
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+              <label>Cutoff Date</label>
+              <input type="text" formControlName="CutoffDate" class="form-control mt-2" readonly/>             
+            </div>
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+            <button class="option-button d-flex align-items-center" (click)="Summary()">Summary</button>
+            <button class="option-button d-flex align-items-center" (click)="Godetails()">Go</button>
+            <button class="option-button d-flex align-items-center" (click)="exportToExcel()" >Excel</button>
+            <button class="option-button d-flex align-items-center" (click)="clearExcel()" [routerLink]="['/dashboard/reports/smareport_translader']">Back</button>
+          </div>          
+      </div>
+      <div *ngIf="showGrid" class="modal-overlay">
+        <div class="modal-body">
+          <div class="summary-grid">
+            <div *ngIf="branchData.length > 0" class="table-container branch-table">
+              <table class="table table-bordered table-sm custom-table">
+                <thead class="table-dark">
+                  <tr>
+                       <th>S.No</th>
+                        <th>Branch</th>
+                        <th>Contract No</th>
+                        <th>Total EMI</th>
+                        <th>Current EMI</th>
+                        <th>Paid EMI</th>
+                        <th>OD</th>
+                        <th>Over Due EMI Amount</th>
+                        <th>ODC</th>
+                        <th>Demand</th>
+                        <th>Collectable Amount</th>
+                        <th>Executive</th>
+                        <th>No Of Days Past Due</th>
+                        <th>SMA Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of branchData; index as i"
+                    [ngStyle]="item.npaCategory === 'NPA' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">
+                    
+                    <td>{{ i + 1 }}</td> 
+                    <td class="left-align">{{ item.Branch }}</td>
+                    <td class="left-align">{{ item.Panum }}</td>
+                    <td class="right-align">{{ item.EMI_Count }}</td>
+                    <td class="right-align">{{ item.CurrentEMI }}</td>
+                    <td class="right-align">{{ item.PaidEMI }}</td>
+                    <td class="right-align">{{ item.OverDue }}</td>
+                    <td class="right-align">{{ item.OverDueEMIAmount }}</td>
+                    <td class="right-align">{{ item.ODCharges }}</td>
+                    <td class="right-align">{{ item.Demand }}</td>
+                    <td class="right-align">{{ item.CollectableAmount }}</td>
+                    <td class="left-align">{{ item.Executive }}</td>
+                    <td class="right-align">{{ item.DPD_Days }}</td>
+                    <td class="left-align">{{ item.SMAStatus }}</td>            
+                  </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showGridSummary" class="modal-overlay">
+        <div class="modal-body">
+          <div class="summary-grid">
+            <div *ngIf="summaryData.length > 0" class="table-container1 branch-table">
+              <table class="table table-bordered table-sm custom-table1">
+                <thead class="table-dark">
+                  <tr>
+                       <th>S.No</th>
+                        <th>Branch</th>
+                        <th>Total Contract</th>
+                        <th>SMA - 0</th>
+                        <th>SMA - 1</th>
+                        <th>SMA - 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of summaryData; index as i"
+                    [ngStyle]="item.npaCategory === 'NPA' ? {'background-color': 'red', 'color': 'blue', 'font-weight': 'bold', 'font-size': '14px'} : {}">                   
+                    <td >{{ i + 1 }}</td> 
+                    <td class="left-align">{{ item.Branch }}</td>
+                    <td class="right-align">{{ item.Total }}</td>
+                    <td class="right-align">{{ item.SMA_0 }}</td>
+                    <td class="right-align">{{ item.SMA_1 }}</td>
+                    <td class="right-align">{{ item.SMA_2 }}</td>
+                  </tr>
+                </tbody>               
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

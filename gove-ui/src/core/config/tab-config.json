@@ -1,0 +1,41 @@
+{
+    "ui": {
+            "tabSettings": [
+                {
+                    "order": 1,
+                    "label": "Request Info",
+                    "routerLink": "request-info/:id",
+                    "key": "request_info",
+                    "disabled": false
+                },
+                {
+                    "order": 2,
+                    "label": "Candidate List",
+                    "routerLink": "candidate-list",
+                    "key": "candidate_list",
+                    "disabled": false
+                },
+                {
+                    "order": 3,
+                    "label": "Search Result",
+                    "routerLink": "search-result",
+                    "key": "search_result",
+                    "disabled": true
+                },
+                {
+                    "order": 4,
+                    "label": "Final Disposition",
+                    "routerLink": "final-disposition",
+                    "key": "final_disposition",
+                    "disabled": false
+                },
+                {
+                    "order": 5,
+                    "label": "History",
+                    "routerLink": "history",
+                    "key": "history",
+                    "disabled": false
+                }
+            ]
+    }
+}

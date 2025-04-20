@@ -244,8 +244,10 @@
 
 @media only screen and (max-width: 540px) {
     .content-box {
-        margin-left: 0;
+        margin-left: '250px';
         width: 100%;
+        margin-top: '50px';
+
 
         .lead-table-box {
             .serach-box {

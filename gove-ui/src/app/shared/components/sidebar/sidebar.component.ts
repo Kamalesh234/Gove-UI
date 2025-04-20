@@ -15,7 +15,7 @@ import { LoaderService } from '../../../../data/services/shared/loader.service';
 export class SidebarComponent implements OnInit {
   public panelOpenState: boolean = false;
   public sideBarList: MenuItem[] = [];
-
+  isSidebarVisible = true;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -27,7 +27,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getSideBarList();
   }
-
+  toggleSidebar() {
+   this.isSidebarVisible = !this.isSidebarVisible;
+  }
   getSideBarList() {
     this.loaderService.showLoader();
     if (localStorage.getItem('userDetails')) {

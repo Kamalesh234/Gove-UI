@@ -1,0 +1,262 @@
+
+:host {
+  width: 100%;
+}
+
+.content-box {
+  width: calc(100% - 250px);
+  margin-left: 255px;
+height: 100%;
+margin-top: 50px;
+
+  // height: 100vh;
+  .option-button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--button-text-color);
+    background: var(--background-button);
+    border: unset;
+    padding: 5px 10px;
+  }
+
+  .user-managment-box {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    
+    .breadcrumb {
+      li {
+        color: var(--text-color);
+      }
+    }
+    
+    .usermanagment-table {
+      thead {
+        tr {
+          th {
+            background-color: var(--table-header-background);
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            color: var(--header-text-color);
+          }
+        }
+      }
+
+      thead td {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        color: var(--text-dark);
+      }
+    }
+
+    .lead-master-box {
+      border: 1px solid #cfd9e8;
+      border-radius: 5px;
+      padding: 20px;
+
+      .breadcrumb {
+        li {
+          color: var(--text-color);
+        }
+      }
+
+      .lead-master-form {
+        caption {
+          font-size: 20px;
+          color: var(--text-bold-color);
+          padding-top: 0;
+          line-height: 28px;
+          font-weight: 600;
+        }
+
+        label,
+        input {
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 400;
+          color: var(--text-color);
+
+          &:focus {
+            box-shadow: unset;
+          }
+        }
+
+        input {
+          border: 1px solid var(--input-border);
+          background-color: var(--input-background);
+          border-radius: 5px;
+        }
+
+        select {
+          border: 1px solid var(--input-border);
+          background-color: var(--input-background);
+          border-radius: 5px;
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 400;
+          color: var(--text-dark);
+
+          option {
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400;
+          }
+
+          &:focus {
+            box-shadow: unset;
+          }
+        }
+
+        .massage-text {
+          color: #f7811e;
+          font-size: 12px;
+          line-height: 18px;
+          font-weight: 400;
+          margin-bottom: 15px;
+          display: inline-block;
+        }
+      }
+
+      .lead-master-table {
+        border: 1px solid var(--border-color);
+
+        thead {
+          tr {
+            th {
+              background-color: var(--table-header-background);
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 20px;
+              color: var(--header-text-color);
+            }
+          }
+        }
+
+        tr {
+          td {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            color: var(--text-dark);
+          }
+        }
+      }
+
+      .pagination {
+        .page-link {
+          color: #f7811e;
+        }
+      }
+    }
+  }
+}
+
+.mat-mdc-header-row {
+  background-color: var(--table-header-background);
+  height: unset;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+  padding: 0 !important;
+  min-height: unset !important;
+  height: unset !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: transparent !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  border-bottom-color: #fff !important;
+  padding-top: 10px !important;
+}
+
+::ng-deep .mat-mdc-input-element::placeholder {
+  color: #fff !important;
+}
+
+::ng-deep .mat-mdc-input-element {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 22px !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: #fff !important;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+  display: none !important;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  height: 68px;
+}
+
+.table-header {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--header-text-color);
+}
+
+@media only screen and (max-width: 992px) {
+  .content-box {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 80px;
+
+    .user-managment-box {
+      overflow: scroll;
+
+      .usermanagment-table {
+        thead {
+          tr {
+            th {
+              font-size: 12px;
+              line-height: 18px;
+            }
+          }
+        }
+
+        thead td {
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+
+  // For small screen responsiveness of table headers and inputs
+  .lead-master-box {
+    padding: 10px;
+    .breadcrumb li {
+      font-size: 12px;
+    }
+
+    .lead-master-form {
+      label,
+      input {
+        font-size: 12px;
+      }
+
+      .massage-text {
+        font-size: 10px;
+      }
+    }
+  }
+
+  .pagination {
+    .page-link {
+      font-size: 12px;
+    }
+  }
+}

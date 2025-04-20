@@ -1,0 +1,110 @@
+[
+    {
+        "requestStatusId": 1,
+        "name": "New Request",
+        "displayOrder": 1,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 2,
+        "name": "Returned To Requester",
+        "displayOrder": 2,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 3,
+        "name": "Under CA Review",
+        "displayOrder": 3,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 4,
+        "name": "Search In Progress",
+        "displayOrder": 4,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 5,
+        "name": "Under Legal Review",
+        "displayOrder": 5,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 6,
+        "name": "Under Business Review",
+        "displayOrder": 6,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 7,
+        "name": "Cleared",
+        "displayOrder": 7,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 8,
+        "name": "Managed",
+        "displayOrder": 8,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 9,
+        "name": "True Conflict",
+        "displayOrder": 9,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 10,
+        "name": "Returned to Conflicts Admin",
+        "displayOrder": 10,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 11,
+        "name": "Pending Legal Resolution",
+        "displayOrder": 11,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 12,
+        "name": "Pending Business Resolution",
+        "displayOrder": 12,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 13,
+        "name": "Dead",
+        "displayOrder": 13,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 14,
+        "name": "Expired",
+        "displayOrder": 14,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 15,
+        "name": "No Resolution Required",
+        "displayOrder": 15,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 16,
+        "name": "Withdrawn",
+        "displayOrder": 16,
+        "finalIndicator": true
+    },
+    {
+        "requestStatusId": 17,
+        "name": "Auto-Pending",
+        "displayOrder": 17,
+        "finalIndicator": false
+    },
+    {
+        "requestStatusId": 18,
+        "name": "Auto-Postponed",
+        "displayOrder": 18,
+        "finalIndicator": false
+    }
+]

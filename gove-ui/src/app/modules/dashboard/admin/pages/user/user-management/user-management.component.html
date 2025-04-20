@@ -1,0 +1,191 @@
+<div class="content-box pt-2">
+  <div class="container">
+    <div class="user-managment-box mb-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item active d-flex align-items-center" aria-current="page"><mat-icon class="me-2">home</mat-icon>User Management</li>
+        </ol>
+      </nav>
+    </div>
+     <div class="d-flex align-items-center flex-wrap gap-3">
+      <button class="option-button d-flex align-items-center" [routerLink]="['/system-admin/user-create']">Create</button>
+    </div>   
+    <div class="lead-master-box my-3"  >
+      <table 
+      *ngIf="showTable"
+        mat-table
+        matSort
+        matSortStart="desc"
+        class="table table-bordered rounded usermanagment-table"
+       [dataSource]="dataSource" 
+       >
+        <ng-container matColumnDef="userCode">
+          <th 
+          mat-header-cell 
+          *matHeaderCellDef class="table-header" mat-sort-header>
+          <div class="option">
+            User Code
+            <!-- <div class="search-item-box">
+              <mat-form-field class="m-0 p-0">
+                <input
+                  matInput
+                  name="Filter"
+                  (keyup)="applyFilter($event, 'userCode')"
+                  placeholder="Filter User Coder"
+                />
+              </mat-form-field>
+            </div> -->
+          </div>
+
+          </th>
+          <td mat-cell *matCellDef="let element">
+           {{element.userCode}}
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="userName">
+          <th 
+          mat-header-cell 
+          *matHeaderCellDef class="table-header" 
+          mat-sort-header>
+          <div class="option">
+            User Name
+            <div class="search-item-box">
+              <mat-form-field class="m-0 p-0">
+                <input
+                  matInput
+                  name="userNameFilter"
+                  (keyup)="applyFilter($event, 'userName')"
+                  placeholder="Filter User Name"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          
+          </th>
+          <td mat-cell *matCellDef="let element">
+           {{element.userName}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email" >
+          <th mat-header-cell
+           *matHeaderCellDef 
+           class="table-header" 
+           mat-sort-header>
+           <div class="option">
+            Mobile Number
+            <div class="search-item-box">
+              <mat-form-field class="m-0 p-0">
+                <input
+                  matInput
+                  name="mobileNumberFilter"
+                  (keyup)="applyFilter($event, 'mobileNumber')"
+                  placeholder="Filter Mobile Number"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+           
+            </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.mobileNumber}}
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="designation" >
+          <th mat-header-cell 
+          *matHeaderCellDef 
+          class="table-header" 
+          mat-sort-header>
+          <div class="option">
+            Designation
+            <div class="search-item-box">
+              <mat-form-field class="m-0 p-0">
+                <input
+                  matInput
+                  name="designationFilter"
+                  (keyup)="applyFilter($event, 'designation')"
+                  placeholder="Filter Designation"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          
+            </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.designation}}
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="userLevel" >
+          <th mat-header-cell 
+          *matHeaderCellDef 
+          class="table-header" 
+          mat-sort-header>
+          <div class="option">
+            User Level
+            <div class="search-item-box">
+              <mat-form-field class="m-0 p-0">
+                <input
+                  matInput
+                  name="userlevelFilter"
+                  (keyup)="applyFilter($event, 'userlevel')"
+                  placeholder="Filter User Level"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          
+            </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.userlevel}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef class="table-header">
+            <span style="min-height: 68px" class="d-flex align-items-flexstart"
+              >View</span
+            >
+          </th>
+          
+          <td mat-cell *matCellDef="let element">
+            <mat-icon (click)="viewOrModifyUser(element.userID,'view')">search</mat-icon>
+          </td>
+        </ng-container>
+
+
+
+        <!-- <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef class="table-header"><span style="min-height:68px;"
+              class="d-flex align-items-flexstart">View</span></th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon>search</mat-icon>
+          </td> 
+        </ng-container>-->
+
+
+        <ng-container matColumnDef="modify">
+          <th mat-header-cell *matHeaderCellDef class="table-header"><span style="min-height:68px;"
+              class="d-flex align-items-flexstart">Modify</span>
+            </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon (click)="viewOrModifyUser(element.userID,'modify')">create</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+  </div>
+  
+  </div>
+</div>

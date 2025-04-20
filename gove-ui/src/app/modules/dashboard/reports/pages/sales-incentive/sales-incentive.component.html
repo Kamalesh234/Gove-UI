@@ -1,0 +1,29 @@
+<div class="content-box pt-2">
+    <div class="container">
+      <div class="bmaproval-details-box">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item  d-flex align-items-center" aria-current="page" [routerLink]="['/dashboard']"><mat-icon
+                class="me-2">home</mat-icon>Sales Incentive Report</li>
+            
+          </ol>
+        </nav>
+      </div>
+      <div class="bmaproval-details-box my-3">
+        <form class="bmaproval-details-form" [formGroup]="SalesIncentiveForm"> 
+          <div class="row d-flex gy-2">         
+            <div class="col-12 col-lg-4">
+                <label>Cutoff Month</label>
+                <input type="date" formControlName="Cutoffmonth" class="form-control mt-2">
+            </div>   
+          </div> 
+        </form>
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 pt-4">
+          <button class="option-button d-flex align-items-center"  (click)="Salesincentivesave()"  [disabled]="!isSaveEnabled">Save</button>
+          <button class="option-button d-flex align-items-center" (click)="Salesincentiveexcel()" >Go</button>
+          <button class="option-button d-flex align-items-center" (click)="clearExcel()">Clear</button>
+          </div>          
+      </div>
+      
+    </div>
+  </div>

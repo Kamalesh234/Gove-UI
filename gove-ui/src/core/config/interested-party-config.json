@@ -1,0 +1,37 @@
+{
+  "InterestedParty": {
+    "rowsPerPageOptions": [50,100,150,200],
+    "rowsPerPages": 50,
+    "sortField": "interestedPartyName",
+    "sortOrder": 1,
+    "columnConfig": [
+      {
+        "columnName": "Interested Party Name",
+        "columnKey": "interestedPartyName",
+        "isHidden":false,
+        "columnOrder":1,
+        "disabled": false,
+        "sortable": true,
+        "field": "interestedPartyName"
+      },
+      {
+        "columnName": "Position",
+        "columnKey": "position",
+        "isHidden":false,
+        "columnOrder":2,
+        "disabled": false,
+        "sortable": true,
+        "field": "position"
+      },
+      {
+        "columnName": "Explanation",
+        "columnKey": "explanation",
+        "isHidden":false,
+        "columnOrder":3,
+        "disabled": false,
+        "sortable": true,
+        "field": "explanation"
+      }
+    ]
+  }
+}
